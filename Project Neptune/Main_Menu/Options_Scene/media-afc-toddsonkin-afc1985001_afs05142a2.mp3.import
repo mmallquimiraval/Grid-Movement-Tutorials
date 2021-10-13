@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/media-afc-toddsonkin-afc1985001_afs05142a2.mp3-0c6ccd2035482655440ffb013a38470f.mp3str"
+
+[deps]
+
+source_file="res://media-afc-toddsonkin-afc1985001_afs05142a2.mp3"
+dest_files=[ "res://.import/media-afc-toddsonkin-afc1985001_afs05142a2.mp3-0c6ccd2035482655440ffb013a38470f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://First_Job_24.tres" type="DynamicFont" id=1]
+[ext_resource path="res://FirstJobFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://return_to_title.gd" type="Script" id=3]
+
+[node name="Play" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 434.0
+margin_top = 308.0
+margin_right = 846.0
+margin_bottom = 412.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 412.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 1, 0.592157, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Play Scene"
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 412.0
+margin_bottom = 104.0
+custom_fonts/font = ExtResource( 1 )
+text = "Back"
+script = ExtResource( 3 )
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="CenterContainer/VBoxContainer/Button" method="_on_Button_pressed"]

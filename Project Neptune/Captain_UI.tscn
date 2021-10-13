@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://game_background.png" type="Texture" id=1]
+[ext_resource path="res://Map.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Character.png" type="Texture" id=4]
+
+[node name="Captain_UI" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Map" parent="." instance=ExtResource( 2 )]
+
+[node name="Character" type="TextureRect" parent="."]
+margin_left = 660.0
+margin_top = 150.0
+margin_right = 902.0
+margin_bottom = 511.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
