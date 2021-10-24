@@ -4,12 +4,12 @@ extends Node2D
 var level_grid
 
 # Customizable level data
-export (int) var grid_width = 5
-export (int) var grid_height = 3
-export (int) var x_start = 90
-export (int) var y_start = 90
-export (int) var x_off = 165
-export (int) var y_off = 165
+export (int) var grid_width = 2
+export (int) var grid_height = 2
+export (int) var start_horiz_offset = 90
+export (int) var start_vertical_offset = 90
+export (int) var margin_bt_adjacent_rows = 150
+export (int) var margin_bt_adjacent_cols = 150
 
 # Keep up with the player tile
 var player
@@ -25,11 +25,12 @@ func _ready():
 	
 	# Initialize the grid to all default tiles
 	level_grid = []
-	for i in range(grid_width):
+	for row in range(grid_width):
 		level_grid.append([])
-		for j in range(grid_height):
-			level_grid[i].append(0)
+		for col in range(grid_height):
+			level_grid[row].append(0) # append as many zeroes as # of cols 
 			
+	print(level_grid)
 	# This function will do more when there are more tile types
 	draw_level()
 	
@@ -47,23 +48,28 @@ func _ready():
 
 # Check for input every frame
 func _process(delta):
-	check_input()
+	Check_input()
 		
 # Convert grid coordinates to pixel values
-func grid_to_pixel(x, y):
-	return Vector2(x * x_off + x_start, y * y_off + y_start)
+func grid_to_pixel(row, col):
+	#print("x: ", x, " y: ", y)
+	#print("x * margin_bt_adjacent_rows ", x * margin_bt_adjacent_rows)
+	#print("x * margin_bt_adjacent_rows + start_horiz_offset ",  x * margin_bt_adjacent_rows + start_horiz_offset)
+	return Vector2(row * margin_bt_adjacent_rows + start_horiz_offset, 
+	col * margin_bt_adjacent_cols + start_vertical_offset)
 		
 # Draw each tile in the level grid
 func draw_level():
-	for i in range(grid_width):
-		for j in range(grid_height):
-			if (level_grid[i][j] == 0):
+	for row in range(grid_width):
+		for col in range(grid_height):
+			if (level_grid[row][col] == 0):
 				var tile = tiles[0].instance()
 				add_child(tile)
-				var pos = grid_to_pixel(i, j)
+				var pos = grid_to_pixel(row, col)
 				tile.position = Vector2(pos[0], pos[1])
+				print("tile.position", tile.position)
 				
-func check_input():
+func Check_input():
 	# Calculate the direction the player is trying to go
 	var dir = Vector2(0, 0)
 	
@@ -82,6 +88,11 @@ func check_input():
 		player.position = grid_to_pixel(target[0], target[1])
 		player.grid_x = target[0]
 		player.grid_y = target[1]
+		Get_player_coordinates()
 	
 	# Set direction back to nothing
 	dir = Vector2(0, 0)
+
+# Gets player's current row and column
+func Get_player_coordinates():
+	print(player.grid_y + 1, char(player.grid_x + 65))
