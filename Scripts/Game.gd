@@ -52,9 +52,6 @@ func _process(delta):
 		
 # Convert grid coordinates to pixel values
 func grid_to_pixel(row, col):
-	#print("x: ", x, " y: ", y)
-	#print("x * margin_bt_adjacent_rows ", x * margin_bt_adjacent_rows)
-	#print("x * margin_bt_adjacent_rows + start_horiz_offset ",  x * margin_bt_adjacent_rows + start_horiz_offset)
 	return Vector2(row * margin_bt_adjacent_rows + start_horiz_offset, 
 	col * margin_bt_adjacent_cols + start_vertical_offset)
 		
